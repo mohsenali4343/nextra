@@ -1,24 +1,19 @@
-// import type { NextConfig } from "next";
+import nextra from "nextra";
 
-// const nextConfig: NextConfig = {
-//   /* config options here */
-// };
-
-// export default nextConfig;
-
-// const withNextra = require("nextra")({
-//   theme: "nextra-theme-docs",
-//   themeConfig: "./theme.config.js",
-// });
-// module.exports = withNextra({ output: "export" });
-import nextra from 'nextra'
- 
-// Set up Nextra with its configuration
 const withNextra = nextra({
-  // ... Add Nextra-specific options here
-})
- 
-// Export the final Next.js config with Nextra included
+  defaultShowCopyCode: true,
+});
+
+// You can include other Next.js configuration options here, in addition to Nextra settings:
 export default withNextra({
-  // ... Add regular Next.js options here
-})
+  output: "export",
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/resources",
+        permanent: true,
+      },
+    ];
+  },
+});
